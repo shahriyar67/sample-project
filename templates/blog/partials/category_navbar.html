@@ -1,0 +1,23 @@
+<div >
+    <nav role="navigation">
+        <ul type="none">
+            <li >
+                <a href="{% url 'blog:home' %}">خانه</a>
+            </li>
+            {% for cat in category %}
+              {% if cat.parent == None %}
+               <li>
+                <a href="{% url 'blog:category' cat.slug %}">{{cat.name}}</a>
+                 {% if cat.children.all %}
+                   {% include 'blog/partials/catLoop.html' %} 
+                 {%endif%}
+               </li>
+              {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <form class="form-inline " action="/search/">
+      <input type="text" name="q" class="form-control" placeholder="جستوجوی متن">
+      <button class="btn btn-success" style="padding: 8px; border-radius:5px; margin-right:5px;">جستو جو</button>
+    </form>
+</div>

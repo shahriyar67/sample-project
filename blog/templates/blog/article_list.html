@@ -1,0 +1,14 @@
+<html>
+   {% for article in object_list %}
+       <article>
+        <H2>{{article.title}}</H2>
+        <div>{{article.published}}</div>
+        <div>{{article.author}}</div>
+        <p>{{article.content|truncatewords:100}}</p>
+        <hr>
+       </article>
+    {% empty %}
+    <p>There is nothing to show you!!!</p>
+    {% endfor %}
+
+</html>

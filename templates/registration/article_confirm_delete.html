@@ -1,0 +1,30 @@
+{% extends 'blog/Base.html' %}
+{% block title %}|{{object.title}} {% endblock %}
+{% block Article %}
+
+<header class="masthead" style="background-image: url('{{article.thumbnail.url}} ')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-10 max-auto">
+              <div class="site-heading">
+                  <center>
+                    <h1>{{article.title}} </h1>
+                    <time>{{i.jpublish}}</time>
+                  </center>
+              </div>
+          </div>
+      </div>
+    </div>
+</header>
+
+
+     <article>
+        <center>
+         <h1>{{article.title}}</h1>
+         <small> {{article.jpublish}} </small>
+        </center>
+        <p class="detai text-justify"> {{article.description|linebreaks|safe}} </p>
+     </article
+
+{% endblock %}

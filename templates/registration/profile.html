@@ -1,0 +1,66 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% block title-meta %}
+{% if request.resolver_match.url_name == 'article-create' %}
+صفحه کاربری
+{% else %}
+اطلاعات کاربر {{object.title}}
+{% endif %}
+{% endblock %}{% endblock %}
+
+{% block main %}
+
+<div dir="rtl" class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+      <div class="card-header">
+        <h3 class="card-title mb-0 float-left">
+        {% if request.resolver_match.url_name == 'article-create' %}
+        افزودن مقاله
+        {% else %}
+        اطلاعات کاربر {{object.title}}
+        {% endif %}  
+        </h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      
+    </div class="card-body">
+    <!-- /.card -->
+       <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ form.username|as_crispy_field }}
+            <div dir="rtl">
+              <label>
+                <span>
+                  <a href="{% url 'password_change' %}">تغییر گذرواژه</a>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.email|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.first_name|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.last_name|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ form.special_user|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0"></div>
+            {{ form.is_author|as_crispy_field }}
+          </div>
+        </div> 
+         <button class="btn btn-success"> اصلاح اطلاعات کاربر</button>
+         {% if user.is_superuser and request.resolver_match.kwargs.pk %}
+         <a href='{% url "account:article-delete" request.resolver_match.kwargs.pk %}'
+         class="btn btn-danger">حذف شود</a>
+         {% endif %} 
+       </form>
+    </div>
+{% endblock %}

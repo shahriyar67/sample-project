@@ -1,0 +1,53 @@
+{% extends 'blog/Base.html' %}
+{% block title %}|{{object.title}} {% endblock %}
+{% block Article %}
+{% comment %} {% load comment_tags %}  {% endcomment %}
+{% comment %} {% load ratings %} {% endcomment %}
+{% load Base_tags %}
+
+{# Loading the template tag #}
+ {# Render all the comments belong to the passed object "obj" #}
+{% comment %} {% include_static %}
+{% include_bootstrap %} {# Include bootstrap 4.1.1 - remove this line if BS is already used in your project #} {% endcomment %}
+
+<header class="masthead" style="background-image: url('{{article.thumbnail.url}} ')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-10 max-auto">
+              <div class="site-heading">
+                  <center>
+                    <h1>{{article.title}} </h1>
+                    {% comment %} <div>بازدید ها : {{ article.hits.count }}</div> {% endcomment %}
+                    <time>{{i.jpublish}}</time>
+                    {% comment %} {% ratings object %} {% endcomment %}
+                  </center>
+              </div>
+          </div>
+      </div>
+    </div>
+</header>
+
+{% comment %} {% popular_articles %} {% endcomment %}
+     <article>
+        <center>
+         <h1>{{article.title}}</h1>
+
+         <small> {{article.jpublish}} </small>
+        </center>
+        {% if object.is_special %}
+          {% if user.is_authenticated and user.is_specialuser or user == object.author or user.is_superuser %}
+              <p class="detail text-justify"> {{article.description|safe|linebreaks}} </p>
+          {% else %}
+          <p class="detail text-justify"> {{article.description|safe|linebreaks|truncatewords:30}} </p>
+          <p class="alert alert-warning">این یک مقاله ویژه است و برای تماشا باید <a href="#" class="alert alert-link">اشتراک ویژه تهیه فرمایید</a></p>
+           {% endif %}          
+        {% else %}
+           <p class="detail text-justify"> {{article.description|safe|linebreaks}}</p>
+        {% endif %}
+        {% comment %} {% render_comments article request %}  {% endcomment %}
+        
+        {% comment %} {% include_bootstrap %} {% endcomment %}
+      </article>
+
+{% endblock %}
