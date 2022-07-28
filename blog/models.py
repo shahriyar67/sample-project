@@ -36,13 +36,15 @@ class Category(models.Model):
 
 class Article(models.Model):
     title=models.CharField(max_length=60)
-    author=models.ForeignKey(User, on_delete=models.CASCADE)
+    author=models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     description=models.TextField()
     created=models.DateTimeField(default=timezone.now)
     published=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
     status=models.BooleanField(default=False)
     slug=models.SlugField()
+    Category = models.ManyToManyField(Category, related_name="articles")
+    
     
     def __str__(self):
         return self.title

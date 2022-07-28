@@ -4,6 +4,9 @@
             <li >
                 <a href="{% url 'blog:home' %}">خانه</a>
             </li>
+            <li >
+              <a href="{% url 'login' %}">ورود به بخش کاربری</a>
+            </li>
             {% for cat in category %}
               {% if cat.parent == None %}
                <li>
