@@ -38,6 +38,7 @@ class Article(models.Model):
     title=models.CharField(max_length=60)
     author=models.ForeignKey(User, on_delete=models.CASCADE, related_name='articles')
     description=models.TextField()
+    thumbnail=models.ImageField(upload_to='images',null=True)
     created=models.DateTimeField(default=timezone.now)
     published=models.DateTimeField(auto_now_add=True)
     updated=models.DateTimeField(auto_now=True)
