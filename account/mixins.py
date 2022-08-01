@@ -5,9 +5,13 @@ from blog.models import Article
 
 class FieldMixins():
     def dispatch(self, request, *args, **kwargs):
+        # self.fields = ['title', 'slug',
+        #                    'description', 'thumbnail',
+        #                    'Category', 'published', 'is_special', 'status'
+        #                    ]
         self.fields = ['title', 'slug',
                            'description', 'thumbnail',
-                           'Category', 'publish', 'is_special', 'status'
+                           'Category', 'status'
                            ]
         if request.user.is_superuser:
             self.fields.append('author')

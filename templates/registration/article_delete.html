@@ -13,11 +13,11 @@
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <div class="card-body py-4"
-        <form method="post">{% csrf_token %}
-            <p class="py-2">آیا از حذف مقاله {{object}} از {{user.get_full_name}} مطمعن هستید؟</p>
-            <input type="submit" value="حذف شود" class="btn btn-danger">
-        </form>
+      <div class="card-body py-4">
+       <form method="post"> {% csrf_token %}
+             <p class="py-2">آیا از حذف مقاله {{object}} از {{user.get_full_name}} مطمعن هستید؟</p>
+             <input type="submit" value="حذف شود" class="btn btn-danger">
+       </form>
          <!-- /.card-body -->
       </div>
     </div>

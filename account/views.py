@@ -43,7 +43,7 @@ class ArticleList(LoginRequiredMixin, AuthorsAccessMixin, ListView):
 class ArticleCreate(LoginRequiredMixin, AuthorsAccessMixin, FormValidMixin, FieldMixins, CreateView):
     model = Article
     template_name = 'registration/Article_create_update.html'
-    
+    success_url = reverse_lazy('account:home')
 
 class ArticleUpdate(AuthorAccessMixin, AuthorsAccessMixin, FormValidMixin, FieldMixins, UpdateView):
     model = Article
