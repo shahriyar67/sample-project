@@ -8,7 +8,7 @@ from django.db.models import Q
 
 class ArticleList(ListView):
      def get_queryset(self) :
-         return Article.objects.filter(status=True)
+         return Article.objects.filter(status=True).order_by("-published")
      paginate_by = 4
 
 

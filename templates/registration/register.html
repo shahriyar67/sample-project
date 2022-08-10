@@ -47,14 +47,14 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="post">{% csrf_token %}
 					<span class="login100-form-title  p-b-26 myfont">
-						خوش امدید
+						خوش امدید به بخش ثبت نام کاربر
 					</span>
 					<span class="login100-form-title p-b-48">
 						<i class="zmdi zmdi-font"></i>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						{{form.username|add_class:'input100'}}
+						نام کاربری               : {{form.username|add_class:'input100'}}
 						  {% if form.username.errors %}
                             <div class="errors">
 								{% for error in form.username.errors %}
@@ -66,7 +66,7 @@
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
-						{{form.email|add_class:'input100'}}
+						ایمیل                    : {{form.email|add_class:'input100'}}
 						  {% if form.email.errors %}
                             <div class="errors">
 								{% for error in form.email.errors %}
@@ -81,7 +81,8 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						{{form.password1|add_class:'input100'}}
+						
+						گذرواژه خودرا وارد کنید   : {{form.password1|add_class:'input100'}}
 						  {% if form.password1.errors %}
                             <div class="errors">
 								{% for error in form.password1.errors %}
@@ -95,7 +96,7 @@
 						<span class="btn-show-pass">
 							<i class="zmdi zmdi-eye"></i>
 						</span>
-						{{form.password2|add_class:'input100'}}
+						گذرواژه خودرا تکرار کنید : {{form.password2|add_class:'input100'}}
 						  {% if form.password2.errors %}
                             <div class="errors">
 								{% for error in form.password2.errors %}

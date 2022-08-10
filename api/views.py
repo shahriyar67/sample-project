@@ -6,5 +6,5 @@ from .serializers import ArticleSerializer
 
 
 class ArticleList(ListCreateAPIView):
-    queryset= Article.objects.all()
+    queryset= Article.objects.all().order_by("-published")
     serializer_class=ArticleSerializer
