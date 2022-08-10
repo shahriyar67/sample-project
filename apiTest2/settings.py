@@ -16,9 +16,6 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-LOGIN_REDIRECT_URL = "account:home"
-LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = "login"
 
 
 # Quick-start development settings - unsuitable for production
@@ -145,6 +142,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+LOGIN_REDIRECT_URL = "account:home"
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = "login"
 
 #email section
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
